@@ -7,16 +7,16 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 
 public class LogisticaImpl extends UnicastRemoteObject
-                         implements LogisticaInterfaz, Serializable {
+implements LogisticaInterfaz, Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private final int precio = 10;
 	private int producto;
 
 	// K = id tienda, V = cantidad producto
 	private HashMap <Integer, Integer> tiendas;
-	
+
 	protected LogisticaImpl() throws RemoteException {
 		super();
 		this.tiendas = new HashMap<Integer, Integer>();
@@ -28,7 +28,7 @@ public class LogisticaImpl extends UnicastRemoteObject
 		this.producto = this.producto + producto;
 		return "El producto total actual es: " + this.producto;
 	}
-	
+
 	@Override
 	public String registrarTienda(int idTienda) throws RemoteException, TiendaRegistradaException {
 		if (this.tiendas.containsKey(idTienda))
