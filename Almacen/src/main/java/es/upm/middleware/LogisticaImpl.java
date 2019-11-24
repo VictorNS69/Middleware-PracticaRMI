@@ -28,13 +28,19 @@ implements LogisticaInterfaz, Serializable {
 		this.producto = this.producto + producto;
 		return "El producto total actual es: " + this.producto;
 	}
+	@Override
+	public String getTiendas() throws RemoteException {
+		if (this.tiendas.isEmpty())
+			return "No hay tiendas actualmente";
+		return this.tiendas.toString();
+	}
 
 	@Override
 	public String registrarTienda(int idTienda) throws RemoteException, TiendaRegistradaException {
 		if (this.tiendas.containsKey(idTienda))
 			throw new TiendaRegistradaException();
 		this.tiendas.put(idTienda, 0);
-		return "Tienda " + idTienda + " registrada\nMap: " + this.tiendas.toString();
+		return "Tienda " + idTienda + " registrada";
 	}
 
 	@Override
@@ -46,7 +52,7 @@ implements LogisticaInterfaz, Serializable {
 		this.producto = this.producto - cantidad;
 		int acumulado = this.tiendas.get(idTienda) + cantidad;
 		this.tiendas.put(idTienda, acumulado);
-		return "Se ha realizado una venta de " + cantidad + " producto/s\nMap: " + this.tiendas.toString() + "\nproducto total: " +this.producto;
+		return "Se ha realizado una venta de " + cantidad + " producto/s";
 	}
 
 	@Override

@@ -10,6 +10,12 @@ public interface LogisticaInterfaz extends Remote {
 	 * @throws RemoteException
 	 */
 	public String addProducto(int producto) throws RemoteException;
+	
+	/** Muestra todas las tiendas (id) y sus ventas (cantidad)
+	 * @return: Mapa de id-cantidad
+	 * @throws RemoteException
+	 */
+	public String getTiendas() throws RemoteException;
 
 	/** Se registra una tienda
 	 * @param id: id de la tienda

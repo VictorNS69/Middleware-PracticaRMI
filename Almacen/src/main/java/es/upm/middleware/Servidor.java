@@ -23,7 +23,8 @@ public class Servidor {
 				System.out.println("Elige una opción:");
 				System.out.println("\t1. Añadir producto");
 				System.out.println("\t2. Ver producto actual");
-				System.out.println("\t3. Salir");
+				System.out.println("\t3. Ver tiendas actuales");
+				System.out.println("\t4. Salir");
 				@SuppressWarnings("resource")
 				Scanner optionsc = new Scanner(System.in);
 				int option = optionsc.nextInt();
@@ -41,6 +42,9 @@ public class Servidor {
 					System.out.println(servicio.addProducto(0));
 					break;
 				case 3:
+					System.out.println(servicio.getTiendas());
+					break;
+				case 4:
 					System.out.println("Saliendo");
 					System.exit(1);
 					break;
