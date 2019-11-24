@@ -7,12 +7,17 @@ import java.rmi.registry.Registry;
 
 public class Cliente {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws RoturaStockException, TiendaRegistradaException {
         Registry registro;
         try{
             registro = LocateRegistry.getRegistry();
-            SaludarInterfaz servicio = (SaludarInterfaz)registro.lookup("Saludar");
-            System.out.println(servicio.decirHola());
+            LogisticaInterfaz servicio = (LogisticaInterfaz)registro.lookup("Saludar");
+            //System.out.println(servicio.registrarTienda(12));
+            System.out.println(servicio.realizarVenta(12,5));
+            System.out.println(servicio.totalizarVentas(12));
+            System.out.println(servicio.totalizarVentas(1));
+            System.out.println(servicio.totalizarIngresos(12));
+            System.out.println(servicio.totalizarIngresos(1));
         } catch (RemoteException e) {
             e.printStackTrace();
         } catch (NotBoundException e) {
