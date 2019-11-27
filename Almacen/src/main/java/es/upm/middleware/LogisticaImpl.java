@@ -47,7 +47,7 @@ implements LogisticaInterfaz, Serializable {
 	public String realizarVenta(int idTienda) throws RemoteException, RoturaStockException {
 		if (!this.tiendas.containsKey(idTienda))
 			return "Esta tienda no esta registrada";
-		if (this.producto > 0)
+		if (this.producto == 0)
 			throw new RoturaStockException();
 		this.producto = this.producto -1;
 		int acumulado = this.tiendas.get(idTienda) + 1;
