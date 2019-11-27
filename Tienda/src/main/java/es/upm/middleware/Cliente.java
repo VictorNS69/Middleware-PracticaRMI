@@ -42,24 +42,15 @@ public class Cliente {
 				int option = optionsc.nextInt();
 				switch (option) {
 				case 1:
-					boolean cantidadB = false;
-					while (!cantidadB) {
-						System.out.println("Seleciona la cantidad"
-								+ "\n(cualquier caracter no numerico para cancelar)");
-						@SuppressWarnings("resource")
-						Scanner cantidadsc = new Scanner(System.in);
-						try {
-							int cantidad = cantidadsc.nextInt();
-							System.out.println(servicio.realizarVenta(id,cantidad));
-							cantidadB = true;
+					try {
+						System.out.println(servicio.realizarVenta(id));
+	
 						} catch (RoturaStockException e) {
 							System.out.println("Parece que no hay suficiente stock. "
-									+ "\nIntentalo con otra cantidad o intentalo mas tarde");
+									+ "\nIntentalo mas tarde");
 						}
-						catch (InputMismatchException e) {
-							cantidadB = true;
-						}
-					}
+
+					
 					break;
 				case 2:
 					System.out.println(servicio.totalizarVentas(id));
@@ -69,8 +60,11 @@ public class Cliente {
 					break;
 				case 4:
 					// TODO: no sé si es esto lo que se pide
-					try {
-						System.out.println(servicio.realizarVenta(id,10));
+					try {	
+						for(int i = 0; i<10;i++){
+							System.out.println(servicio.realizarVenta(id));
+						}
+						
 					} catch (RoturaStockException e) {
 						System.out.println("Parece que no hay suficiente stock. "
 								+ "\nIntentalo mas tarde");

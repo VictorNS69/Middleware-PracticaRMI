@@ -30,7 +30,7 @@ public interface LogisticaInterfaz extends Remote {
 	 * @return: mensaje de OK o de error
 	 * @throws RemoteException, RoturaStock
 	 */
-	public String realizarVenta(int idTienda, int cantidad) throws RemoteException, RoturaStockException;
+	public String realizarVenta(int idTienda) throws RemoteException, RoturaStockException;
 
 	/** Se devuelve el total de ventas de producto realizado
 	 * @param idTienda: id e la tienda
