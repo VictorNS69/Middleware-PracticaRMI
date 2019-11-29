@@ -11,6 +11,12 @@ public interface LogisticaInterfaz extends Remote {
 	 */
 	public String addProducto(int producto) throws RemoteException;
 	
+	/** Retorna la cantidad de producto actual
+	 * @return: cantidad de producto
+	 * @throws RemoteException
+	 */
+	public int getProducto() throws RemoteException;
+
 	/** Muestra todas las tiendas (id) y sus ventas (cantidad)
 	 * @return: Mapa de id-cantidad
 	 * @throws RemoteException
@@ -24,9 +30,8 @@ public interface LogisticaInterfaz extends Remote {
 	 */
 	public String registrarTienda(int id) throws RemoteException, TiendaRegistradaException;
 
-	/** Se realiza la venta de "cantidad" de producto. Esta venta la hace "idTienda"
+	/** Se realiza la venta de 1 cantidad de producto. Esta venta la hace "idTienda"
 	 * @param idTienda: id de la tienda
-	 * @param cantidad: cantidad de producto
 	 * @return: mensaje de OK o de error
 	 * @throws RemoteException, RoturaStock
 	 */

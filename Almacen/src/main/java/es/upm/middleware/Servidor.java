@@ -1,6 +1,5 @@
 package es.upm.middleware;
 
-
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -10,7 +9,7 @@ import java.util.Scanner;
 
 public class Servidor {
 
-	public static void main(String[] args) throws NotBoundException {
+	public static void main(String[] args){
 		Registry registro;
 		try{
 			System.out.println("SERVIDOR");
@@ -39,9 +38,11 @@ public class Servidor {
 						System.out.println("Cantidad no valida");	
 					break;
 				case 2: 
-					System.out.println(servicio.addProducto(0));
+					System.out.println("La cantidad de producto actual es " 
+							+ servicio.getProducto() + " producto/s");
 					break;
 				case 3:
+					System.out.println("ID_tienda = cantidad_vendida");
 					System.out.println(servicio.getTiendas());
 					break;
 				case 4:
@@ -56,6 +57,11 @@ public class Servidor {
 			}
 		} catch (RemoteException e){
 			e.printStackTrace();
+			System.exit(0);
+		}	
+		catch (NotBoundException e) {
+			e.printStackTrace();
+			System.exit(0);
 		}
 		catch (InputMismatchException e) {
 			System.out.println("Opcion no valida. Saliendo.");

@@ -35,7 +35,7 @@ public class Cliente {
 				System.out.println("\t1. Vender productos");
 				System.out.println("\t2. Calcular ventas");
 				System.out.println("\t3. Calcular ingresos");
-				System.out.println("\t4. Realizar pedido");
+				System.out.println("\t4. Realizar pedido (10 unidades)");
 				System.out.println("\t5. Salir");
 				@SuppressWarnings("resource")
 				Scanner optionsc = new Scanner(System.in);
@@ -43,14 +43,28 @@ public class Cliente {
 				switch (option) {
 				case 1:
 					try {
-						System.out.println(servicio.realizarVenta(id));
-	
-						} catch (RoturaStockException e) {
-							System.out.println("Parece que no hay suficiente stock. "
-									+ "\nIntentalo mas tarde");
+						System.out.println("Elige cantidad");
+						@SuppressWarnings("resource")
+						Scanner cantidadsc = new Scanner(System.in);
+						int cantidad = cantidadsc.nextInt();
+						if (cantidad <= 0) {
+							System.out.println("Cantidad no valida");
+							break;
 						}
-
-					
+						int actual = servicio.getProducto();
+						if (cantidad > actual) {
+							System.out.println("No hay suficiente stock");
+							System.out.println("La cantidad de producto actual es " 
+									+ actual + " producto/s y has elegido " + cantidad);	
+							break;
+						}
+						for (int i = 0; i < cantidad; i++) {
+							System.out.println(servicio.realizarVenta(id));
+						}
+					} catch (RoturaStockException e) {
+						System.out.println("Parece que no hay suficiente stock. "
+								+ "\nIntentalo mas tarde");
+					}
 					break;
 				case 2:
 					System.out.println(servicio.totalizarVentas(id));
@@ -59,16 +73,7 @@ public class Cliente {
 					System.out.println(servicio.totalizarIngresos(id));
 					break;
 				case 4:
-					// TODO: no sé si es esto lo que se pide
-					try {	
-						for(int i = 0; i<10;i++){
-							System.out.println(servicio.realizarVenta(id));
-						}
-						
-					} catch (RoturaStockException e) {
-						System.out.println("Parece que no hay suficiente stock. "
-								+ "\nIntentalo mas tarde");
-					}
+					System.out.println(servicio.addProducto(10));
 					break;
 				case 5:
 					System.out.println("Saliendo");
@@ -81,8 +86,14 @@ public class Cliente {
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
+			System.exit(0);
 		} catch (NotBoundException e) {
 			e.printStackTrace();
+			System.exit(0);
+		}
+		catch (InputMismatchException e) {
+			System.out.println("Opcion no valida. Saliendo.");
+			System.exit(1);
 		}
 	}
 }
