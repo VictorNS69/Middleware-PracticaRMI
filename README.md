@@ -85,7 +85,7 @@ practicarmi/
 ./scripts/run_tienda.sh
 ```
 ## Autores
-- Víctor Nieves Sánchez (Scrum Master & Developer)
+- [Víctor Nieves Sánchez](https://github.com/VictorNS69/)  (Scrum Master & Developer)
 - Ruben Garcia Garcia (Product Owner & Developer)
 - Eduardo Freyre Gomez (Developer)
 - Miguel Gonzalo Anton (Developer)
